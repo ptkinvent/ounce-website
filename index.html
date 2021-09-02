@@ -1,27 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Welcome to Ounce!</title>
-<style>
-    body {
-        width: 35em;
-        margin: 0 auto;
-        font-family: Tahoma, Verdana, Arial, sans-serif;
-    }
-</style>
+    <title>Welcome to Ounce!</title>
+    <style>
+        .content {
+            width: 35em;
+            margin: 0 auto;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+        }
+    </style>
 </head>
+
+
+
 <body>
-<h1>Welcome to Ounce!</h1>
-<p>If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.</p>
+<div class="content">
+    <h1>Welcome to Ounce!</h1>
+    <p>If you see this page, the nginx web server is successfully installed and
+    working. Further configuration is required.</p>
 
-<p>For online documentation and support please refer to
-<a href="http://nginx.org/">nginx.org</a>.<br/>
-Commercial support is available at
-<a href="http://nginx.com/">nginx.com</a>.</p>
+    <p>For online documentation and support please refer to
+    <a href="http://nginx.org/">nginx.org</a>.<br/>
+    Commercial support is available at
+    <a href="http://nginx.com/">nginx.com</a>.</p>
 
-<img src="john.jpg" width=100%>
+    <img src="john.jpg" width=100%>
 
-<p><em>Thank you for using nginx.</em></p>
+    <p><em>Thank you for using nginx.</em></p>
+</div>
+
+<script src="three.js"></script>
+<script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    camera.position.z = 5;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+    }
+    animate();
+</script>
+
+
 </body>
 </html>
