@@ -3,7 +3,7 @@
 <head>
     <title>Welcome to Ounce!</title>
     <style>
-        .content {
+        body {
             width: 35em;
             margin: 0 auto;
             font-family: Tahoma, Verdana, Arial, sans-serif;
@@ -14,7 +14,6 @@
 
 
 <body>
-<div class="content">
     <h1>Welcome to Ounce!</h1>
     <p>If you see this page, the nginx web server is successfully installed and
     working. Further configuration is required.</p>
@@ -24,36 +23,43 @@
     Commercial support is available at
     <a href="http://nginx.com/">nginx.com</a>.</p>
 
-    <img src="john.jpg" width=100%>
+    <div id="content">
+    </div>
 
     <p><em>Thank you for using nginx.</em></p>
-</div>
 
-<script src="three.js"></script>
-<script>
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    <script src="three.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(document.getElementById('content').clientWidth, document.getElementById('content').clientWidth*2/3);
+        document.getElementById('content').appendChild(renderer.domElement);
 
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+        const vertices = [];
+        for (let i=0; i<1e4; i++) {
 
-    camera.position.z = 5;
+            const x = THREE.MathUtils.randFloatSpread(300);
+            const y = THREE.MathUtils.randFloatSpread(300);
+            const z = THREE.MathUtils.randFloatSpread(300);
+            vertices.push(x, y, z);
+        }
 
-    function animate() {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-    }
-    animate();
-</script>
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        const material = new THREE.PointsMaterial({ color: 0x00FF00 });
+        const points = new THREE.Points(geometry, material);
+        scene.add(points);
+        camera.position.z = 5;
 
-
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+            // points.rotation.x += 0.01;
+            points.rotation.y += 0.001;
+        }
+        animate();
+    </script>
 </body>
 </html>
