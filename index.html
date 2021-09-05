@@ -32,7 +32,18 @@
         import * as THREE from 'https://cdn.skypack.dev/three@0.132.2';
 
         import { OrbitControls } from 'https://cdn.skypack.dev/three@0.132.2/examples/jsm/controls/OrbitControls.js';
-        import { vertices } from './points.js'
+        import { unclassifiedVertices } from './data/points_unclassified.js';
+        import { bareEarthGroundVertices } from './data/points_bare_earth_ground.js';
+        import { lowVegetationVertices } from './data/points_low_vegetation.js';
+        import { mediumVegetationVertices } from './data/points_medium_vegetation.js';
+        import { highVegetationVertices } from './data/points_high_vegetation.js';
+        import { buildingVertices } from './data/points_building.js';
+        import { lowNoiseVertices } from './data/points_low_noise.js';
+        import { waterVertices } from './data/points_water.js';
+        import { ignoredGroundVertices } from './data/points_ignored_ground.js';
+        import { bridgesVertices } from './data/points_bridges.js';
+        import { highNoiseVertices } from './data/points_high_noise.js';
+        import { errorVertices } from './data/points_error.js';
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
@@ -51,11 +62,78 @@
         //    vertices.push(x, y, z);
         //}
 
-        const geometry = new THREE.BufferGeometry();
-        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
-        const material = new THREE.PointsMaterial({ color: 0x00FF00 });
-        const points = new THREE.Points(geometry, material);
-        scene.add(points);
+        const unclassifiedGeometry = new THREE.BufferGeometry();
+        unclassifiedGeometry.setAttribute('position', new THREE.Float32BufferAttribute(unclassifiedVertices, 3));
+        const unclassifiedMaterial = new THREE.PointsMaterial({ color: 0x000000 });
+        const unclassifiedPoints = new THREE.Points(unclassifiedGeometry, unclassifiedMaterial);
+        scene.add(unclassifiedPoints);
+
+        const bareEarthGroundGeometry = new THREE.BufferGeometry();
+        bareEarthGroundGeometry.setAttribute('position', new THREE.Float32BufferAttribute(bareEarthGroundVertices, 3));
+        const bareEarthGroundMaterial = new THREE.PointsMaterial({ color: 0x00FF00 });
+        const bareEarthGroundPoints = new THREE.Points(bareEarthGroundGeometry, bareEarthGroundMaterial);
+        scene.add(bareEarthGroundPoints);
+
+        const lowVegetationGeometry = new THREE.BufferGeometry();
+        lowVegetationGeometry.setAttribute('position', new THREE.Float32BufferAttribute(lowVegetationVertices, 3));
+        const lowVegetationMaterial = new THREE.PointsMaterial({ color: 0x00FFFF });
+        const lowVegetationPoints = new THREE.Points(lowVegetationGeometry, lowVegetationMaterial);
+        scene.add(lowVegetationPoints);
+
+        const mediumVegetationGeometry = new THREE.BufferGeometry();
+        mediumVegetationGeometry.setAttribute('position', new THREE.Float32BufferAttribute(mediumVegetationVertices, 3));
+        const mediumVegetationMaterial = new THREE.PointsMaterial({ color: 0xFFFF00 });
+        const mediumVegetationPoints = new THREE.Points(mediumVegetationGeometry, mediumVegetationMaterial);
+        scene.add(mediumVegetationPoints);
+
+        const highVegetationGeometry = new THREE.BufferGeometry();
+        highVegetationGeometry.setAttribute('position', new THREE.Float32BufferAttribute(highVegetationVertices, 3));
+        const highVegetationMaterial = new THREE.PointsMaterial({ color: 0x00AA00 });
+        const highVegetationPoints = new THREE.Points(highVegetationGeometry, highVegetationMaterial);
+        scene.add(highVegetationPoints);
+
+        const buildingGeometry = new THREE.BufferGeometry();
+        buildingGeometry.setAttribute('position', new THREE.Float32BufferAttribute(buildingVertices, 3));
+        const buildingMaterial = new THREE.PointsMaterial({ color: 0xFF0000 });
+        const buildingPoints = new THREE.Points(buildingGeometry, buildingMaterial);
+        scene.add(buildingPoints);
+
+        const lowNoiseGeometry = new THREE.BufferGeometry();
+        lowNoiseGeometry.setAttribute('position', new THREE.Float32BufferAttribute(lowNoiseVertices, 3));
+        const lowNoiseMaterial = new THREE.PointsMaterial({ color: 0x000000 });
+        const lowNoisePoints = new THREE.Points(lowNoiseGeometry, lowNoiseMaterial);
+        scene.add(lowNoisePoints);
+
+        const waterGeometry = new THREE.BufferGeometry();
+        waterGeometry.setAttribute('position', new THREE.Float32BufferAttribute(waterVertices, 3));
+        const waterMaterial = new THREE.PointsMaterial({ color: 0x0000FF });
+        const waterPoints = new THREE.Points(waterGeometry, waterMaterial);
+        scene.add(waterPoints);
+
+        const ignoredGroundGeometry = new THREE.BufferGeometry();
+        ignoredGroundGeometry.setAttribute('position', new THREE.Float32BufferAttribute(ignoredGroundVertices, 3));
+        const ignoredGroundMaterial = new THREE.PointsMaterial({ color: 0x000000 });
+        const ignoredGroundPoints = new THREE.Points(ignoredGroundGeometry, ignoredGroundMaterial);
+        scene.add(ignoredGroundPoints);
+
+        const bridgesGeometry = new THREE.BufferGeometry();
+        bridgesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(bridgesVertices, 3));
+        const bridgesMaterial = new THREE.PointsMaterial({ color: 0x007700 });
+        const bridgesPoints = new THREE.Points(bridgesGeometry, bridgesMaterial);
+        scene.add(bridgesPoints);
+
+        const highNoiseGeometry = new THREE.BufferGeometry();
+        highNoiseGeometry.setAttribute('position', new THREE.Float32BufferAttribute(highNoiseVertices, 3));
+        const highNoiseMaterial = new THREE.PointsMaterial({ color: 0x000000 });
+        const highNoisePoints = new THREE.Points(highNoiseGeometry, highNoiseMaterial);
+        scene.add(highNoisePoints);
+
+        const errorGeometry = new THREE.BufferGeometry();
+        errorGeometry.setAttribute('position', new THREE.Float32BufferAttribute(errorVertices, 3));
+        const errorMaterial = new THREE.PointsMaterial({ color: 0x000000 });
+        const errorPoints = new THREE.Points(errorGeometry, errorMaterial);
+        scene.add(errorPoints);
+
         camera.position.x = -5;
         camera.position.y = -5;
         //camera.position.z = 5;
