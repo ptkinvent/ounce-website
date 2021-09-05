@@ -32,9 +32,10 @@
         import * as THREE from 'https://cdn.skypack.dev/three@0.132.2';
 
         import { OrbitControls } from 'https://cdn.skypack.dev/three@0.132.2/examples/jsm/controls/OrbitControls.js';
+        import { vertices } from './points.js'
 
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
 
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(document.getElementById('content').clientWidth, document.getElementById('content').clientWidth*2/3);
@@ -42,21 +43,22 @@
 
         const controls = new OrbitControls(camera, renderer.domElement);
 
-        const vertices = [];
-        for (let i=0; i<1e4; i++) {
-
-            const x = THREE.MathUtils.randFloatSpread(300);
-            const y = THREE.MathUtils.randFloatSpread(300);
-            const z = THREE.MathUtils.randFloatSpread(300);
-            vertices.push(x, y, z);
-        }
+        //const vertices = [];
+        //for (let i=0; i<5e6; i++) {
+        //    const x = THREE.MathUtils.randFloatSpread(3e4);
+        //    const y = THREE.MathUtils.randFloatSpread(3e4);
+        //    const z = THREE.MathUtils.randFloatSpread(3e4);
+        //    vertices.push(x, y, z);
+        //}
 
         const geometry = new THREE.BufferGeometry();
         geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
         const material = new THREE.PointsMaterial({ color: 0x00FF00 });
         const points = new THREE.Points(geometry, material);
         scene.add(points);
-        camera.position.z = 5;
+        camera.position.x = -5;
+        camera.position.y = -5;
+        //camera.position.z = 5;
         controls.update();
 
         function animate() {
