@@ -68,7 +68,7 @@
         unclassifiedGeometry.setAttribute('position', new THREE.Float32BufferAttribute(unclassifiedVertices, 3));
         const unclassifiedMaterial = new THREE.PointsMaterial({ color: 0x000000 });
         const unclassifiedPoints = new THREE.Points(unclassifiedGeometry, unclassifiedMaterial);
-        scene.add(unclassifiedPoints);
+        //scene.add(unclassifiedPoints);
 
         const bareEarthGroundGeometry = new THREE.BufferGeometry();
         bareEarthGroundGeometry.setAttribute('position', new THREE.Float32BufferAttribute(bareEarthGroundVertices, 3));
@@ -104,7 +104,7 @@
         lowNoiseGeometry.setAttribute('position', new THREE.Float32BufferAttribute(lowNoiseVertices, 3));
         const lowNoiseMaterial = new THREE.PointsMaterial({ color: 0x000000 });
         const lowNoisePoints = new THREE.Points(lowNoiseGeometry, lowNoiseMaterial);
-        scene.add(lowNoisePoints);
+        //scene.add(lowNoisePoints);
 
         const waterGeometry = new THREE.BufferGeometry();
         waterGeometry.setAttribute('position', new THREE.Float32BufferAttribute(waterVertices, 3));
@@ -116,7 +116,7 @@
         ignoredGroundGeometry.setAttribute('position', new THREE.Float32BufferAttribute(ignoredGroundVertices, 3));
         const ignoredGroundMaterial = new THREE.PointsMaterial({ color: 0x000000 });
         const ignoredGroundPoints = new THREE.Points(ignoredGroundGeometry, ignoredGroundMaterial);
-        scene.add(ignoredGroundPoints);
+        //scene.add(ignoredGroundPoints);
 
         const bridgesGeometry = new THREE.BufferGeometry();
         bridgesGeometry.setAttribute('position', new THREE.Float32BufferAttribute(bridgesVertices, 3));
@@ -128,13 +128,13 @@
         highNoiseGeometry.setAttribute('position', new THREE.Float32BufferAttribute(highNoiseVertices, 3));
         const highNoiseMaterial = new THREE.PointsMaterial({ color: 0x000000 });
         const highNoisePoints = new THREE.Points(highNoiseGeometry, highNoiseMaterial);
-        scene.add(highNoisePoints);
+        //scene.add(highNoisePoints);
 
         const errorGeometry = new THREE.BufferGeometry();
         errorGeometry.setAttribute('position', new THREE.Float32BufferAttribute(errorVertices, 3));
         const errorMaterial = new THREE.PointsMaterial({ color: 0x000000 });
         const errorPoints = new THREE.Points(errorGeometry, errorMaterial);
-        scene.add(errorPoints);
+        //scene.add(errorPoints);
 
         camera.position.x = -5;
         //camera.position.y = -5;
