@@ -197,7 +197,15 @@
             // points.rotation.x += 0.01;
             // points.rotation.y += 0.001;
         }
+
         animate();
+
+        window.addEventListener('resize', onWindowResize, false);
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(document.getElementById('content').clientWidth, document.getElementById('content').clientWidth*2/3);
+        }
     </script>
 </body>
 </html>
